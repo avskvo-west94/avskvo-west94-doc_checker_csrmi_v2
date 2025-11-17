@@ -1,0 +1,10 @@
+{
+  "min_file_size": 100,
+  "max_file_size": 104857600,
+  "max_filename_length": 255,
+  "forbidden_filename_chars": ["<", ">", ":", "\"", "|", "?", "*"],
+  "required_keywords": [],
+  "forbidden_keywords": [],
+  "min_content_length": 0,
+  "check_pdf_structure": false
+}
