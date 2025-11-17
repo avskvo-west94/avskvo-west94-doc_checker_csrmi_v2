@@ -1,0 +1,54 @@
+<Window x:Class="DocumentChecker.Views.TemplateEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактирование шаблона" Height="700" Width="900"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Название шаблона:" Margin="0,0,0,5"/>
+            <TextBox x:Name="TemplateNameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Описание:" Margin="0,10,0,5"/>
+            <TextBox x:Name="TemplateDescriptionTextBox" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+                     TextWrapping="Wrap" AcceptsReturn="True" Height="60"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Text="Поля:" FontWeight="Bold" FontSize="14" Margin="0,10,0,10"/>
+
+        <DataGrid x:Name="FieldsDataGrid" Grid.Row="2" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  GridLinesVisibility="All"
+                  HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название поля" Binding="{Binding Name}" Width="250" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Эталонное значение" Binding="{Binding ReferenceValue}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="3" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Content="Допустимые варианты" Click="ValidVariants_Click" Margin="0,0,5,0" Padding="10,5"/>
+                <Button Content="Ошибочные варианты" Click="InvalidVariants_Click" Padding="10,5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Сохранить" Click="Save_Click" Margin="0,0,5,0" Padding="15,5"/>
+                <Button Content="Отмена" Click="Cancel_Click" Padding="15,5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
