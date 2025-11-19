@@ -187,10 +187,21 @@ namespace DocumentChecker.Services
             return text.ToString().Trim();
         }
 
-        private string GetHeaderFooterText(OpenXmlElement headerFooter)
+        private string GetHeaderFooterText(Header header)
         {
             var text = new StringBuilder();
-            foreach (var paragraph in headerFooter.Elements<Paragraph>())
+            foreach (var paragraph in header.Elements<Paragraph>())
+            {
+                text.Append(GetParagraphText(paragraph));
+                text.Append(" ");
+            }
+            return text.ToString().Trim();
+        }
+
+        private string GetHeaderFooterText(Footer footer)
+        {
+            var text = new StringBuilder();
+            foreach (var paragraph in footer.Elements<Paragraph>())
             {
                 text.Append(GetParagraphText(paragraph));
                 text.Append(" ");

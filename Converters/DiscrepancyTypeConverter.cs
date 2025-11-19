@@ -16,7 +16,7 @@ namespace DocumentChecker.Converters
                     DiscrepancyType.ExactMismatch => "Точное несовпадение",
                     DiscrepancyType.PartialMatch => "Опечатка",
                     DiscrepancyType.KnownError => "Известная ошибка",
-                    _ => value.ToString()
+                    _ => value?.ToString() ?? string.Empty
                 };
             }
             return value?.ToString() ?? string.Empty;
