@@ -24,12 +24,12 @@ namespace DocumentChecker.Services
             // Замена всех типов пробелов на обычный пробел
             normalized = Regex.Replace(normalized, @"\s+", " ");
             
-            // Унификация кавычек
-            normalized = normalized.Replace('"', '"').Replace('"', '"');
-            normalized = normalized.Replace(''', ''').Replace(''', ''');
+            // Унификация кавычек (используем Unicode escape sequences)
+            normalized = normalized.Replace('\u201C', '"').Replace('\u201D', '"'); // " и "
+            normalized = normalized.Replace('\u2018', '\'').Replace('\u2019', '\''); // ' и '
             
             // Унификация дефисов и тире
-            normalized = normalized.Replace('–', '-').Replace('—', '-');
+            normalized = normalized.Replace('\u2013', '-').Replace('\u2014', '-'); // – и —
             
             // Удаление повторяющихся пробелов
             normalized = Regex.Replace(normalized, @"\s+", " ");

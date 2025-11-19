@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using DocumentChecker.Models;
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
@@ -186,7 +187,7 @@ namespace DocumentChecker.Services
             return text.ToString().Trim();
         }
 
-        private string GetHeaderFooterText(HeaderFooterType headerFooter)
+        private string GetHeaderFooterText(OpenXmlElement headerFooter)
         {
             var text = new StringBuilder();
             foreach (var paragraph in headerFooter.Elements<Paragraph>())

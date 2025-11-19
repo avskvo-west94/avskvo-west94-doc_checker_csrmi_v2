@@ -7,6 +7,11 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>DocumentChecker</AssemblyName>
     <RootNamespace>DocumentChecker</RootNamespace>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
 
   <ItemGroup>
