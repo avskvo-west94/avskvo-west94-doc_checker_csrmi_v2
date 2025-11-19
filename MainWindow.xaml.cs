@@ -273,8 +273,17 @@ namespace DocumentChecker
                     Cursor = System.Windows.Input.Cursors.Wait;
                     _fixService.FixDiscrepancies(_currentDocumentPath, selectedDiscrepancies, _currentTemplate);
                     
-                    MessageBox.Show("Исправления применены. Не забудьте сохранить документ!", 
-                        "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Предлагаем сохранить документ
+                    var saveResult = MessageBox.Show(
+                        $"Исправления применены ({selectedDiscrepancies.Count} несоответствий).\n\nСохранить исправленный документ?",
+                        "Исправления применены",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+                    
+                    if (saveResult == MessageBoxResult.Yes)
+                    {
+                        SaveDocumentAs_Click(sender, e);
+                    }
                 }
                 catch (Exception ex)
                 {
